@@ -1,4 +1,4 @@
-package com.revature.L5_freight.Exceptions.Controller;
+package com.revature.L5_freight.Controller;
 
 import com.revature.L5_freight.Exceptions.InvalidTonnageException;
 import com.revature.L5_freight.Model.Container;

@@ -1,7 +1,7 @@
-package notebook.Service;
+package com.revature.L2_notebook.Service;
 
-import notebook.Application;
-import notebook.Model.Entry;
+import com.revature.L2_notebook.Application;
+import com.revature.L2_notebook.Model.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

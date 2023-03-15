@@ -55,8 +55,7 @@ public class WorkoutController {
      */
     @GetMapping("workout")
     public List<Workout> getAllWorkout() throws Exception {
-        throw new Exception();
-        //return workoutService.getAllWorkout();
+        return workoutService.getAllWorkout();
     }
     /**
      * Endpoint on POST localhost:8080/workout should add a new workout and respond with a JSON of the added workout

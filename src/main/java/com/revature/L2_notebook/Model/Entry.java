@@ -1,4 +1,4 @@
-package notebook.Model;
+package com.revature.L2_notebook.Model;
 
 import java.util.Objects;
 

@@ -5,20 +5,17 @@ import com.revature.L3_fitness.Model.Plan;
 import com.revature.L3_fitness.Model.Workout;
 import com.revature.L3_fitness.Repository.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 /**
- * The @Service annotation is a stereotype annotation. This means that the @Service annotation, like the @Controller,
- * the @RestController, and the @Repository annotations, are all specialized @Component annotations. @Service, however,
- * does not significantly differ from @Component, and is just used for the logical organization of the project.
- *
  * For the purpose of completing any challenges within this project: do not change anything within this class!
  * It is already complete.
  */
-@Service
+@Component
 public class WorkoutService {
     WorkoutRepository workoutRepository;
     @Autowired

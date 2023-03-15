@@ -1,8 +1,8 @@
-package notebook.Controller;
+package com.revature.L2_notebook.Controller;
 
+import com.revature.L2_notebook.Model.Entry;
+import com.revature.L2_notebook.Service.NotebookService;
 import jakarta.websocket.server.PathParam;
-import notebook.Model.Entry;
-import notebook.Service.NotebookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

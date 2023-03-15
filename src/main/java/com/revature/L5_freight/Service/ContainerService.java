@@ -5,6 +5,7 @@ import com.revature.L5_freight.Model.Container;
 import com.revature.L5_freight.Repository.ContainerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

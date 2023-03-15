@@ -6,6 +6,7 @@ import com.revature.L4_art.Repository.ArtistRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * For the purpose of completing any challenges within this project: do not change anything within this class!
  * It is already complete.
  */
-@Component
+@Service
 public class ArtistService {
     /**
      * This class relies on an ArtistRepository dependency. Spring can inject this Object as a Bean (Object managed by
