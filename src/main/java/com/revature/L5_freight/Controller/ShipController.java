@@ -69,11 +69,13 @@ public class ShipController {
      *     "id":1
      *     "name":"ever given",
      *     "tonnage":100000
+     *     "containers":[]
      * },
      * {
      *     "id":2
      *     "name":"nautilis",
      *     "tonnage":5
+     *     "containers":[]
      * }]
      * @return
      */
@@ -88,6 +90,7 @@ public class ShipController {
      *     "id":1
      *     "name":"ever given",
      *     "tonnage":100000
+     *     "containers":[]
      * }
      * @param id
      * @return

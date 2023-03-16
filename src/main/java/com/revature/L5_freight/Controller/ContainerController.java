@@ -58,10 +58,21 @@ public class ContainerController {
     public List<Container> postManyContainers(@PathVariable long id, @RequestBody List<Container> containers) throws InvalidTonnageException {
         return containerService.addListContainers(id, containers);
     }
+
+    /**
+     * Get all containers endpoint
+     * @return
+     */
     @GetMapping("container")
     public List<Container> getAllContainers(){
         return containerService.getAllContainers();
     }
+
+    /**
+     * Get container by id endpoint
+     * @param id
+     * @return
+     */
     @GetMapping("container/{id}")
     public Container getContainerById(@PathVariable long id){
         return containerService.getContainerById(id);
