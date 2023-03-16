@@ -1,6 +1,10 @@
 package com.revature.L3_fitness.Controller;
+import com.revature.L3_fitness.Model.Plan;
 import com.revature.L3_fitness.Service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -25,34 +29,38 @@ public class PlanController {
         this.planService = planService;
     }
     /**
-     * TODO: create an endpoint for GET localhost:9000/plan that returns all plans.
-     * For instance, a request to GET localhost:9000/plan could respond with
-     * [{
-     *      "planId":1,
-     *      "reps":2
-     * },
-     * {
-     *      "planId":1,
-     *      "reps":4
-     * },
-     * {
-     *      "planId":3,
-     *      "reps":20
-     * }]
-     */
-
-    /**
-     * TODO: create an endpoint for POST localhost:/9000/workout/{id}/plan that adds a new plan for a workout with a specific id
-     * and responds with the added plan.
+     * Endpoint for POST localhost:/9000/workout/{workoutId}/plan that adds a new plan for a workout with a specific id
+     * and responds with the added plan. This endpoint is already provided to allow you to test your API.
      * For instance, a request to POST localhost:9000/workout/1/plan that contains the request body
      * {
-     *      "reps":2
+     *      "numberOfReps":2
      * }
      * should add the new plan to the workout with id 1 and respond with
      * {
      *      "planId":1,
-     *      "reps":2
+     *      "numberOfReps":2
      * }
+     */
+    @PostMapping("workout/{workoutId}/plan")
+    public Plan postPlan(@PathVariable long workoutId, @RequestBody Plan plan){
+        return planService.addPlan(workoutId, plan);
+    }
+
+    /**
+     * TODO: create an endpoint for GET localhost:9000/plan that returns all plans.
+     * For instance, a request to GET localhost:9000/plan could respond with
+     * [{
+     *      "planId":1,
+     *      "numberOfReps":2
+     * },
+     * {
+     *      "planId":1,
+     *      "numberOfReps":4
+     * },
+     * {
+     *      "planId":3,
+     *      "numberOfReps":20
+     * }]
      */
 
     /**
@@ -60,7 +68,7 @@ public class PlanController {
      * For instance, a request to GET localhost:9000/plan/1 could respond with
      * {
      *      "planId":1,
-     *      "reps":2
+     *      "numberOfReps":2
      * },
      */
 
@@ -72,11 +80,11 @@ public class PlanController {
      *     "title":"run a mile"
      *     "plans":[{
      *                  "planId":1,
-     *                  "reps":1
+     *                  "numberOfReps":1
      *              },
      *              {
      *                  "planId":2,
-     *                  "reps":4
+     *                  "numberOfReps":4
      *              }]
      * }
      */
@@ -86,7 +94,7 @@ public class PlanController {
      * For instance, a request to DELETE localhost:9000/plan/1 should delete the plan and respond with
      * {
      *      "planId":1,
-     *      "reps":2
+     *      "numberOfReps":2
      * }
      */
 
@@ -95,12 +103,12 @@ public class PlanController {
      * updated object
      * For instance, a request to PATCH localhost:9000/plan/1 containing the request body
      * {
-     *     "reps":3
+     *     "numberOfReps":3
      * }
      * should update the plan with id 1 and respond with
      * {
      *      "planId":1,
-     *      "reps":3
+     *      "numberOfReps":3
      * }
      */
 }

@@ -18,12 +18,12 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
  * There is no need to change anything in this class.
  */
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-public class Application {
+public class NotebookApplication {
     /**
      * Set up a logfile - now that we're using API rather than console output, you want to log everything your
      * HTTP server does, don't you?
      *
-     * When another class uses Application.log.info, it's actually just referencing this static Object in this class.
+     * When another class uses ArtApplication.log.info, it's actually just referencing this static Object in this class.
      */
     public static Logger log = LogManager.getLogger();
 
@@ -33,6 +33,6 @@ public class Application {
      * @param args
      */
     public static void main(String[] args) {
-        SpringApplication.run(Application.class);
+        SpringApplication.run(NotebookApplication.class);
     }
 }

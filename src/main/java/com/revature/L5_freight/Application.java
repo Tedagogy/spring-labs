@@ -16,7 +16,7 @@ public class Application {
 	public static Logger log = LogManager.getLogger(Application.class);
 
 	/**
-	 * Automatically configure & run the Spring Application Context, start Controllers
+	 * Automatically configure & run the Spring ArtApplication Context, start Controllers
 	 * @param args
 	 */
 	public static void main(String[] args) {

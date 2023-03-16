@@ -1,11 +1,12 @@
 package com.revature.L5_freight.Aspect;
 
-import com.revature.L4_art.Application;
+import com.revature.L4_art.ArtApplication;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 /**
  * Spring AOP (aspect-oriented-programming) is a Spring module that addresses the problem of repetitive code in our
@@ -24,6 +25,7 @@ import org.aspectj.lang.annotation.Before;
  * It is already complete.
  */
 @Aspect
+@Component
 public class ShipAspect {
     /**
      * This method contains Advice, which is code that is applied as a cross-cutting-concern at a JoinPoint. A
@@ -37,7 +39,8 @@ public class ShipAspect {
      */
     @Before("execution(* com.revature.L5_freight.Service.ShipService.*(..))")
     public void logBeforeArtistServiceMethods(JoinPoint joinPoint){
-        Application.log.info("log before method execution: "+joinPoint);
+        System.out.println("test1");
+        ArtApplication.log.info("aop: log before method execution: "+joinPoint);
     }
     /**
      * This method contains Advice, which is code that is applied as a cross-cutting-concern at a JoinPoint. A
@@ -51,7 +54,8 @@ public class ShipAspect {
      */
     @After("execution(* com.revature.L5_freight.Service.ShipService.*(..))")
     public void logAfterArtistServiceMethods(JoinPoint joinPoint){
-        Application.log.info("log after method execution: "+joinPoint);
+        System.out.println("test2");
+        ArtApplication.log.info("aop: log after method execution: "+joinPoint);
     }
     /**
      * This method contains Advice, which is code that is applied as a cross-cutting-concern at a JoinPoint. A
@@ -65,7 +69,7 @@ public class ShipAspect {
      */
     @AfterThrowing("execution(* com.revature.L5_freight.Service.ShipService.*(..))")
     public void logAfterArtistServiceException(JoinPoint joinPoint){
-        Application.log.info("exception thrown: "+joinPoint);
+        ArtApplication.log.warn("aop: exception thrown: "+joinPoint);
     }
     /**
      * Advice:

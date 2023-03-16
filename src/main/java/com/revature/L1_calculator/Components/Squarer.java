@@ -3,12 +3,12 @@ package com.revature.L1_calculator.Components;
 /**
  * TODO: Modify this class so that it functions as a component within the Spring Framework.
  *
- * The current functionality of the Application requires the "Squarer" class to be retrieved from the Application
+ * The current functionality of the ArtApplication requires the "Squarer" class to be retrieved from the ArtApplication
  * Context - which you can think of as the current pool of usable Spring Beans. In order for this class to be contained
- * within the Application Context, several things need to happen:
+ * within the ArtApplication Context, several things need to happen:
 
  * 1, the configuration of this class should be provided using the @Bean annotation in the Configuration class,
- * which in this case is Application.java.
+ * which in this case is ArtApplication.java.
  * 2, because this class is dependent on Multiplier, a Multiplier bean should be Autowired into this class. Look into
  * how the Multiplier can be autowired in (there are 3 different ways!)
  *

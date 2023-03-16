@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Scope;
 public class Application {
 
     /**
-     * This main method will demonstrate how to start the Spring Application Context and how to pull beans
+     * This main method will demonstrate how to start the Spring ArtApplication Context and how to pull beans
      * out of the Spring IOC (inversion-of-control) container.
      * There is no need to change anything within this class.
      * @param args
@@ -37,7 +37,7 @@ public class Application {
          */
         ApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
         /**
-         * Now let's pull some beans out of the Spring Application Context.
+         * Now let's pull some beans out of the Spring ArtApplication Context.
          */
         Adder adderBean = context.getBean(Adder.class);
         System.out.println("Got the adder bean. it says the result of 2+2="+adderBean.add(2,2));

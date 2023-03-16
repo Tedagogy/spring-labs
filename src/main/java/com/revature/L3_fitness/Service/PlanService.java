@@ -3,6 +3,7 @@ package com.revature.L3_fitness.Service;
 import com.revature.L3_fitness.Model.Plan;
 import com.revature.L3_fitness.Model.Workout;
 import com.revature.L3_fitness.Repository.PlanRepository;
+import com.revature.L3_fitness.Repository.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,23 +17,27 @@ import java.util.List;
 @Component
 public class PlanService {
     PlanRepository planRepository;
+    WorkoutRepository workoutRepository;
     @Autowired
-    public PlanService(PlanRepository planRepository){
+    public PlanService(PlanRepository planRepository, WorkoutRepository workoutRepository){
         this.planRepository = planRepository;
+        this.workoutRepository = workoutRepository;
+    }
+    /**
+     * Persist a new plan and return the persisted plan. This is provided for you to allow you to test your API.
+     * @param plan transient Plan entity
+     * @return the persisted Plan entity
+     */
+    public Plan addPlan(long workoutId, Plan plan){
+        Workout workout = workoutRepository.findById(workoutId).get();
+        workout.getPlans().add(plan);
+        return planRepository.save(plan);
     }
     /**
      * TODO: return all plans from the PlanRepository
      * @return all Plan entities
      */
     public List<Plan> getAllPlan(){
-        return null;
-    }
-    /**
-     * TODO: persist a new plan
-     * @param plan transient Plan entity
-     * @return the persisted Plan entity
-     */
-    public Plan addPlan(Plan plan){
         return null;
     }
     /**

@@ -1,7 +1,11 @@
 package com.revature.L4_art.Controller;
 
+import com.revature.L4_art.Model.Painting;
 import com.revature.L4_art.Service.PaintingService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -36,6 +40,20 @@ public class PaintingController {
         this.paintingService = paintingService;
     }
     /**
+     * This endpoint is provided because the logic is tricky, and you need to be able to test your API. Endpoint on POST
+     * localhost:9000/artist/{artistID}/painting to persist a painting contained in the request
+     * body. For instance, a request to POST localhost:9000/artist/3/painting, containing a valid new Painting JSON in
+     * the request body such as
+     * {"title":"untitled", "year":2023, "genre":"paw print"}
+     * should persist a new Painting entity into the Painting table and respond with
+     * {"id":1, "title":"untitled", "year":2023, "genre":"paw print"}
+     */
+    @PostMapping("artist/{id}/painting")
+    public Painting postPainting(@PathVariable long id, @RequestBody Painting painting){
+        return paintingService.savePainting(id, painting);
+    }
+
+    /**
      * TODO Problem 1: write an endpoint on GET localhost:9000/painting to get all paintings.
      * For instance, a request to GET localhost:9000/painting should retrieve all paintings, such as
      * [{"title":"guernica", "year":1937, "genre":"cubism"},
@@ -45,31 +63,22 @@ public class PaintingController {
      */
 
     /**
-     * TODO Problem 2: write an endpoint on POST localhost:9000/painting to persist a painting contained in the request
-     * body. For instance, a request to POST localhost:9000/artist/3/painting, containing a valid new Painting JSON in
-     * the request body such as
-     * {"title":"untitled", "year":2023, "genre":"paw print"}
-     * should persist a new Painting entity into the Painting table and respond with
-     * {"id":1, "title":"untitled", "year":2023, "genre":"paw print"}
-     */
-
-    /**
-     * TODO Problem 3: write an endpoint on GET localhost:9000/paintings?title={title} to retrieve all paintings with
-     * some title. For instance, a request to GET localhost:9000/paintings?title=blue could respond with
+     * TODO Problem 3: write an endpoint on GET localhost:9000/painting?title={title} to retrieve all paintings with
+     * some title. For instance, a request to GET localhost:9000/painting?title=blue could respond with
      * [{"title":"blue", "year":1927, "genre":"abstract"},
      *  {"title":"blue", "year":2023, "genre":"paw prints"}]
      */
 
     /**
-     * TODO Problem 4: write an endpoint on GET localhost:9000/paintings?genre={genre} to retrieve all paintings with
-     * some genre. For instance, a request to GET localhost:9000/paintings?genre=surrealist could respond with
+     * TODO Problem 4: write an endpoint on GET localhost:9000/painting?genre={genre} to retrieve all paintings with
+     * some genre. For instance, a request to GET localhost:9000/painting?genre=surrealist could respond with
      * [{"title":"capricious", "year":1930, "genre":"abstract"},
      *  {"title":"blue", "year":1927, "genre":"abstract"}]
      */
 
     /**
-     * TODO Problem 5: write an endpoint on GET localhost:9000/paintings?genre={genre}&title={title} to retrieve all
-     * paintings with some genre AND title. For instance, a request to GET localhost:9000/paintings?title=blue&genre=surrealist
+     * TODO Problem 5: write an endpoint on GET localhost:9000/painting?genre={genre}&title={title} to retrieve all
+     * paintings with some genre AND title. For instance, a request to GET localhost:9000/painting?title=blue&genre=surrealist
      * could respond with,
      * [{"title":"blue", "year":1927, "genre":"abstract"}]
      */

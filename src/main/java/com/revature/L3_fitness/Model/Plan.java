@@ -36,13 +36,16 @@ public class Plan {
      * the Plan table will have a foreign key to the Workout table. If the developer retrieves the Workout Object
      * from this class, it will be a real Workout Entity which is mapped to the database.
      *
+     * fetch = FetchType.EAGER will load all related entites when this entity is retrieved. FetchType.LAZY would
+     * load them only when requested.
+     *
      * The @JsonBackReference annotation prevents this field from being part of the Object's JSON. This prevents the
      * field from resulting in an infinite JSON (eg a painting's artist's painting's artist...) You can swap
      * Painting's JsonBackReference with Artist's JsonManagedEntity if you need the Artist to be in the Painting's JSON.
      *
      * The @JoinColumn annotation will define the name of the foreign key column referring to the Workout table.
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name="workoutFK")
     private Workout workout;

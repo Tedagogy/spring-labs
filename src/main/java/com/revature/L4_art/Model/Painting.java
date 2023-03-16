@@ -51,7 +51,7 @@ public class Painting {
      *
      * The @JoinColumn annotation will define the name of the foreign key column referring to the Artist table.
      */
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
     @JoinColumn(name = "artist_id")
     private Artist artist;

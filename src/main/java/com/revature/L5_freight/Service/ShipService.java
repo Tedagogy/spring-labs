@@ -6,6 +6,7 @@ import com.revature.L5_freight.Repository.ShipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,13 +31,15 @@ public class ShipService {
      * @throws InvalidTonnageException ships can not have negative tonnage (they'd sink), containers can not have
      * negative weight (they'd fly away)
      */
-    public void addListShips(List<Ship> ships) throws InvalidTonnageException {
+    public List<Ship> addListShips(List<Ship> ships) throws InvalidTonnageException {
+        List<Ship> persistedShips = new ArrayList<>();
         for(int i = 0; i < ships.size(); i++){
             if(ships.get(i).getTonnage()<=0){
                 throw new InvalidTonnageException();
             }
-            shipRepository.save(ships.get(i));
+            persistedShips.add(shipRepository.save(ships.get(i)));
         }
+        return persistedShips;
     }
     /**
      * @return all ship entities

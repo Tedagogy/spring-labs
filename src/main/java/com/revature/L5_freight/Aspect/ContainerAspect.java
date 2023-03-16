@@ -1,6 +1,7 @@
 package com.revature.L5_freight.Aspect;
 
 import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
 
 /**
  * Spring AOP (aspect-oriented-programming) is a Spring module that addresses the problem of repetitive code in our
@@ -16,6 +17,7 @@ import org.aspectj.lang.annotation.Aspect;
  * development when cross-cutting-concern need to be modified.
  */
 @Aspect
+@Component
 public class ContainerAspect {
     /**
      * TODO: Write Advice that should be applied Before any method in ContainerService executes that prints to the

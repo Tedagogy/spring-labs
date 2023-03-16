@@ -1,6 +1,5 @@
 package com.revature.L2_notebook.Service;
-import com.revature.L2_notebook.Application;
-import org.springframework.stereotype.Component;
+import com.revature.L2_notebook.NotebookApplication;
 
 import java.util.Date;
 
@@ -16,7 +15,7 @@ public class TimeService {
     public String getCurrentTime(){
         long currentTimeMillis = System.currentTimeMillis();
         Date currentDate = new Date(currentTimeMillis);
-        Application.log.info("TimeService: Generated the current time and date: "+currentDate);
+        NotebookApplication.log.info("TimeService: Generated the current time and date: "+currentDate);
         return currentDate.toString();
     }
 }

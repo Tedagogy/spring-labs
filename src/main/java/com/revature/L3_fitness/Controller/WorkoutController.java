@@ -37,18 +37,18 @@ public class WorkoutController {
      *     "title":"run a mile"
      *     "plans":[{
      *                  "planId":1,
-     *                  "reps":2
+     *                  "numberOfReps":2
      *              },
      *              {
      *                  "planId":2,
-     *                  "reps":4
+     *                  "numberOfReps":4
      *              }]
      * }, {
      *     "workoutId":2,
      *     "title":"pushups"
      *     "plans":[{
      *                  "planId":3,
-     *                  "reps":20
+     *                  "numberOfReps":20
      *              }]
      * }]
      * @return all workout entities
@@ -82,11 +82,11 @@ public class WorkoutController {
      *     "title":"run a mile"
      *     "plans":[{
      *                  "planId":1,
-     *                  "reps":1
+     *                  "numberOfReps":1
      *              },
      *              {
      *                  "planId":2,
-     *                  "reps":4
+     *                  "numberOfReps":4
      *              }]
      * }
      */
@@ -99,11 +99,11 @@ public class WorkoutController {
      * For instance, GET localhost:8080/workout/1/plan should respond with
      * [{
      *      "planId":1,
-     *      "reps":1
+     *      "numberOfReps":1
      *  },
      *  {
      *      "planId":1,
-     *      "reps":4
+     *      "numberOfReps":4
      *  }]
      */
     @GetMapping("workout/{id}/plan")
@@ -118,11 +118,11 @@ public class WorkoutController {
      *     "title":"run a mile"
      *     "plans":[{
      *                  "planId":1,
-     *                  "reps":1
+     *                  "numberOfReps":1
      *              },
      *              {
      *                  "planId":1,
-     *                  "reps":4
+     *                  "numberOfReps":4
      *              }]
      * }
      */
@@ -142,11 +142,11 @@ public class WorkoutController {
      *     "title":"jog a mile"
      *     "plans":[{
      *                  "planId":1,
-     *                  "reps":1
+     *                  "numberOfReps":1
      *              },
      *              {
      *                  "planId":1,
-     *                  "reps":4
+     *                  "numberOfReps":4
      *              }]
      * }
      */

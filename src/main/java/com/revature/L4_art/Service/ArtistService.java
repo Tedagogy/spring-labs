@@ -1,11 +1,9 @@
 package com.revature.L4_art.Service;
 
-import com.revature.L4_art.Application;
+import com.revature.L4_art.ArtApplication;
 import com.revature.L4_art.Model.Artist;
 import com.revature.L4_art.Repository.ArtistRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,14 +37,14 @@ public class ArtistService {
     @Autowired
     public ArtistService(ArtistRepository artistRepository){
         this.artistRepository = artistRepository;
-        Application.log.info("logging method execution: ArtistService constructor");
+        ArtApplication.log.info("logging method execution: ArtistService constructor");
     }
     /**
      * Method uses the JPARepository-provided method findAll().
      * @return a list of all Artist entities
      */
     public List<Artist> getAllArtists(){
-        Application.log.info("logging method execution: ArtistService.getAllArtists");
+        ArtApplication.log.info("logging method execution: ArtistService.getAllArtists");
         return artistRepository.findAll();
     }
     /**
@@ -57,7 +55,7 @@ public class ArtistService {
      * @return a persisted Artist entity
      */
     public Artist saveArtist(Artist artist){
-        Application.log.info("logging method execution: ArtistService.saveArtist");
+        ArtApplication.log.info("logging method execution: ArtistService.saveArtist");
         return artistRepository.save(artist);
     }
     /**
@@ -66,7 +64,7 @@ public class ArtistService {
      * @return all Artist entities with the nationality
      */
     public List<Artist> getArtistsByNationality(String nationality){
-        Application.log.info("logging method execution: ArtistService.getArtistsByNationality");
+        ArtApplication.log.info("logging method execution: ArtistService.getArtistsByNationality");
         return artistRepository.findArtistsByNationality(nationality);
     }
     /**
@@ -75,7 +73,7 @@ public class ArtistService {
      * @return all Artist entities with the nationality
      */
     public List<Artist> getArtistsByName(String name){
-        Application.log.info("logging method execution: ArtistService.getArtistsByName");
+        ArtApplication.log.info("logging method execution: ArtistService.getArtistsByName");
         return artistRepository.findArtistsByNationality(name);
     }
 }

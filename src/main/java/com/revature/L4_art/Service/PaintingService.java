@@ -1,7 +1,9 @@
 package com.revature.L4_art.Service;
 
-import com.revature.L4_art.Application;
+import com.revature.L4_art.ArtApplication;
+import com.revature.L4_art.Model.Artist;
 import com.revature.L4_art.Model.Painting;
+import com.revature.L4_art.Repository.ArtistRepository;
 import com.revature.L4_art.Repository.PaintingRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,30 +29,34 @@ import java.util.List;
 @Transactional
 public class PaintingService {
     PaintingRepository paintingRepository;
+    ArtistRepository artistRepository;
     @Autowired
-    public PaintingService(PaintingRepository paintingRepository){
-        Application.log.info("logging method execution: PaintingService constructor");
+    public PaintingService(PaintingRepository paintingRepository, ArtistRepository artistRepository){
+        ArtApplication.log.info("logging method execution: PaintingService constructor");
         this.paintingRepository = paintingRepository;
+        this.artistRepository = artistRepository;
     }
 
     /**
-     * TODO Problem 1: Leverage the Spring Data JPARepository method save() to persist a new Painting to the Painting table. The
-     * new painting should be returned.
+     * Leverage the Spring Data JPARepository method save() to persist a new Painting to the Painting table. The
+     * new painting is returned. This functionality is provided to allow you to test your API.
      * @param painting A transient Painting entity
      * @return the persisted Painting entity, if successful
      */
-    public Painting savePainting(Painting painting){
-        return null;
+    public Painting savePainting(long artistID, Painting painting){
+        Artist a = artistRepository.findById(artistID).get();
+        a.getPaintings().add(painting);
+        return paintingRepository.save(painting);
     }
     /**
-     * TODO Problem 2: Leverage the Spring Data JPARepository method findAll() to retrieve all Paintings from the Painting table.
+     * TODO Problem 1: Leverage the Spring Data JPARepository method findAll() to retrieve all Paintings from the Painting table.
      * @return a list of all Painting entities
      */
     public List<Painting> getAllPaintings(){
         return null;
     }
     /**
-     * TODO Problem 3: Write a query method in Spring Data JPARepository to retrieve all Paintings by their genre.
+     * TODO Problem 2: Write a query method in Spring Data JPARepository to retrieve all Paintings by their genre.
      * @param genre
      * @return a list of all Painting entities with a particular genre.
      */
@@ -58,7 +64,7 @@ public class PaintingService {
         return null;
     }
     /**
-     * TODO Problem 4: Write a query method in Spring Data JPARepository to retrieve all Paintings by their title.
+     * TODO Problem 3: Write a query method in Spring Data JPARepository to retrieve all Paintings by their title.
      * @param title
      * @return a list of all Painting entities with a particular title.
      */
@@ -66,7 +72,7 @@ public class PaintingService {
         return null;
     }
     /**
-     * TODO Problem 5: Write a query method in Spring Data JPARepository to retrieve all Paintings by their title & genre.
+     * TODO Problem 4: Write a query method in Spring Data JPARepository to retrieve all Paintings by their title & genre.
      * @param title
      * @param genre
      * @return a list of all Painting entities with a particular title & genre.

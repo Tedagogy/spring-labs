@@ -1,12 +1,11 @@
 package com.revature.L3_fitness.Service;
 
-import com.revature.L3_fitness.Application;
+import com.revature.L3_fitness.FitnessApplication;
 import com.revature.L3_fitness.Model.Plan;
 import com.revature.L3_fitness.Model.Workout;
 import com.revature.L3_fitness.Repository.WorkoutRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +20,7 @@ public class WorkoutService {
     @Autowired
     public WorkoutService(WorkoutRepository workoutRepository){
         this.workoutRepository = workoutRepository;
-        Application.log.info("WorkoutService: Autowired the WorkoutService class - ready to go");
+        FitnessApplication.log.info("WorkoutService: Autowired the WorkoutService class - ready to go");
     }
     /**
      * Use the findAll method, which is provided by all Spring Data JPARepositories, to get all workouts.
@@ -29,7 +28,7 @@ public class WorkoutService {
      */
     public List<Workout> getAllWorkout(){
         List<Workout> workoutList = workoutRepository.findAll();
-        Application.log.info("WorkoutService: returning all workouts: "+workoutList);
+        FitnessApplication.log.info("WorkoutService: returning all workouts: "+workoutList);
         return workoutList;
     }
     /**
@@ -39,7 +38,7 @@ public class WorkoutService {
      */
     public Workout addWorkout(Workout workout){
         Workout persistedWorkout = workoutRepository.save(workout);
-        Application.log.info("WorkoutService: saving a workout: "+workout);
+        FitnessApplication.log.info("WorkoutService: saving a workout: "+workout);
         return persistedWorkout;
     }
     /**
@@ -52,7 +51,7 @@ public class WorkoutService {
     public Workout getWorkoutById(long id){
         Optional<Workout> workoutOptional = workoutRepository.findById(id);
         Workout workout = workoutOptional.get();
-        Application.log.info("WorkoutService: Getting workout by ID: "+id+", "+workout);
+        FitnessApplication.log.info("WorkoutService: Getting workout by ID: "+id+", "+workout);
         return workoutOptional.get();
     }
     /**
@@ -65,7 +64,7 @@ public class WorkoutService {
     public List<Plan> getWorkoutPlans(long id){
         Workout workout = getWorkoutById(id);
         List<Plan> plans = workout.getPlans();
-        Application.log.info("WorkoutService: Getting plans of workout id: "+id+", "+plans);
+        FitnessApplication.log.info("WorkoutService: Getting plans of workout id: "+id+", "+plans);
         return plans;
     }
     /**
@@ -79,7 +78,7 @@ public class WorkoutService {
         Optional<Workout> workoutOptional = workoutRepository.findById(id);
         Workout workout = workoutOptional.get();
         workoutRepository.delete(workout);
-        Application.log.info("WorkoutService: deleting workout of ID: "+id+" which was: "+workout);
+        FitnessApplication.log.info("WorkoutService: deleting workout of ID: "+id+" which was: "+workout);
         return workout;
     }
     /**
@@ -95,7 +94,7 @@ public class WorkoutService {
         Workout workout = workoutOptional.get();
         workout.setTitle(newWorkout.getTitle());
         workoutRepository.save(workout);
-        Application.log.info("Updated workout of ID: "+id+", which is now: "+workout);
+        FitnessApplication.log.info("Updated workout of ID: "+id+", which is now: "+workout);
         return workout;
     }
 }

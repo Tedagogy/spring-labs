@@ -1,9 +1,8 @@
 package com.revature.L5_freight.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
 
 /**
@@ -18,11 +17,17 @@ import lombok.*;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * there is no need to modify this class.
+ */
 public class Container {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
     //    @Column annotations actually aren't necessary. all fields will be made columns by default.
-    private String contents;
-    private double weight;
+    public String contents;
+    public double weight;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonBackReference
+    public Ship ship;
 }

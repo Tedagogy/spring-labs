@@ -1,4 +1,4 @@
-package com.revature.L4_art;
+package com.revature.L3_fitness;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,18 +9,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * The @SpringBootApplication annotation enables automatic configuration of a Spring App.
  */
 @SpringBootApplication
-public class Application {
+public class FitnessApplication {
 	/**
-	 * set up a logger - to be used in the Aspect classes to apply logging to all Service class methods via AOP
+	 * Logger setup
 	 */
-	public static Logger log = LogManager.getLogger(Application.class);
+	public static Logger log = LogManager.getLogger();
 
 	/**
-	 * Automatically configure & run the Spring Application Context, start Controllers
+	 * SpringApplication.run will set up the Spring ArtApplication Context for us and start up all controllers
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class);
+		SpringApplication.run(FitnessApplication.class);
 	}
 
 }

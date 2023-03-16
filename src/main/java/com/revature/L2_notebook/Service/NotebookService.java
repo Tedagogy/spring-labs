@@ -1,6 +1,6 @@
 package com.revature.L2_notebook.Service;
 
-import com.revature.L2_notebook.Application;
+import com.revature.L2_notebook.NotebookApplication;
 import com.revature.L2_notebook.Model.Entry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -30,14 +30,14 @@ public class NotebookService {
     public NotebookService(TimeService timeService){
         this.timeService = timeService;
         entries = new ArrayList<>();
-        Application.log.info("NotebookService: Just instantiated a new NotebookService! Dependency injection for the win");
+        NotebookApplication.log.info("NotebookService: Just instantiated a new NotebookService! Dependency injection for the win");
     }
 
     /**
      * @return all entries from the list of notebook entries
      */
     public List<Entry> getEntries(){
-        Application.log.info("NotebookService: Getting all entries: "+entries);
+        NotebookApplication.log.info("NotebookService: Getting all entries: "+entries);
         return entries;
     }
 
@@ -49,7 +49,7 @@ public class NotebookService {
     public Entry addEntry(Entry entry){
         entry.setTime(timeService.getCurrentTime());
         entries.add(entry);
-        Application.log.info("NotebookService: Added a new entry: "+entry);
+        NotebookApplication.log.info("NotebookService: Added a new entry: "+entry);
         return entry;
     }
 
@@ -60,7 +60,7 @@ public class NotebookService {
      */
     public Entry getEntriesById(int entryNumber) {
         Entry entry = entries.get(entryNumber);
-        Application.log.info("NotebookService: Getting an entry by id: "+entryNumber+" which is "+entry);
+        NotebookApplication.log.info("NotebookService: Getting an entry by id: "+entryNumber+" which is "+entry);
         return entry;
     }
 

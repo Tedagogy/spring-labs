@@ -35,7 +35,7 @@ public class Workout {
      * the Plan table will have a foreign key to the Workout table. If the developer retrieves Plan entities from
      * this class, it will be a List of real Plan entities connected with the database.
      */
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
 
     private List<Plan> plans;
 

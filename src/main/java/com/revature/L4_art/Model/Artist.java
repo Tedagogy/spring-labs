@@ -50,7 +50,7 @@ public class Artist {
      * You can swap Painting's JsonBackReference with Artist's JsonManagedEntity if you need the Artist to be in the
      * Painting's JSON.
      */
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Painting> paintings;
 }
