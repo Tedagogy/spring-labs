@@ -1,11 +1,11 @@
 package com.revature.L3_fitness.Controller;
 import com.revature.L3_fitness.Model.Plan;
+import com.revature.L3_fitness.Model.Workout;
 import com.revature.L3_fitness.Service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Recall that @Controller is a stereotype annotation introduced by Spring MVC (model/view/controller), which
@@ -62,6 +62,10 @@ public class PlanController {
      *      "numberOfReps":20
      * }]
      */
+    @GetMapping("plan")
+    public List<Plan> getAllPlans(){
+        return planService.getAllPlan();
+    }
 
     /**
      * TODO: create an endpoint for GET localhost:9000/plan/{id} that returns the plan with an id.
@@ -88,6 +92,10 @@ public class PlanController {
      *              }]
      * }
      */
+    @GetMapping("plan/{id}/workout")
+    public Workout getWorkoutOfPlan(@PathVariable("id") long id){
+        return planService.getWorkoutOfPlan(id);
+    }
 
     /**
      * TODO: create an endpoint for DELETE localhost:9000/plan/{id} that deletes a plan and responds with the deleted plan

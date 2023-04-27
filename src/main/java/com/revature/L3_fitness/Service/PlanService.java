@@ -1,9 +1,11 @@
 package com.revature.L3_fitness.Service;
 
+import com.revature.L3_fitness.FitnessApplication;
 import com.revature.L3_fitness.Model.Plan;
 import com.revature.L3_fitness.Model.Workout;
 import com.revature.L3_fitness.Repository.PlanRepository;
 import com.revature.L3_fitness.Repository.WorkoutRepository;
+import com.revature.L5_freight.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -38,7 +40,7 @@ public class PlanService {
      * @return all Plan entities
      */
     public List<Plan> getAllPlan(){
-        return null;
+        return planRepository.findAll();
     }
     /**
      * TODO: return a plan of a specific ID from the PlanRepository
@@ -51,7 +53,10 @@ public class PlanService {
      * TODO: return the workout entity associated with a certain Plan
      */
     public Workout getWorkoutOfPlan(long id){
-        return null;
+        Plan plan = planRepository.findById(id).get();
+        Workout w = plan.getWorkout();
+        FitnessApplication.log.info("get workout: "+plan + w);
+        return w;
     }
     /**
      * TODO: delete a plan entity using its ID and return the deleted workout

@@ -1,5 +1,6 @@
 package com.revature.L3_fitness.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -36,7 +37,8 @@ public class Workout {
      * this class, it will be a List of real Plan entities connected with the database.
      */
     @OneToMany(fetch = FetchType.EAGER)
-
+    @JoinColumn(name="workoutFK")
+    @JsonManagedReference
     private List<Plan> plans;
 
     public long getId() {
@@ -91,7 +93,6 @@ public class Workout {
         return "Workout{" +
                 "id=" + workoutId +
                 ", title='" + title + '\'' +
-                ", plans=" + plans +
                 '}';
     }
 }
